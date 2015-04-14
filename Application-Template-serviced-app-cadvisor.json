@@ -1,0 +1,122 @@
+{
+   "ID": "",
+   "Name": "cAdvisor",
+   "Version": "0.3",
+   "Description": "cAdvisor (Container Advisor) (www.jangaraj.com) - provides container users an understanding of the resource usage and performance characteristics of their running containers.",
+   "Services": [
+     {
+       "Name": "cAdvisor",
+       "Title": "cAdvisor",
+       "Version": "1.0",
+       "Command": "/usr/bin/cadvisor",
+       "Description": "cAdvisor (www.jangaraj.com)",
+       "Tags": [
+         "daemon"
+       ],
+       "ImageID": "google/cadvisor:latest",
+       "Instances": {
+         "Min": 0,
+         "Max": 1,
+         "Default": 0
+       },
+       "ChangeOptions": null,
+       "Launch": "auto",
+       "HostPolicy": "",
+       "Hostname": "",
+       "Privileged": false,
+       "ConfigFiles": null,
+       "Context": null,
+       "Endpoints": [
+         {
+           "Name": "cadvisor",
+           "Purpose": "export",
+           "Protocol": "tcp",
+           "PortNumber": 8080,
+           "PortTemplate": "",
+           "VirtualAddress": "",
+           "Application": "cadvisor",
+           "ApplicationTemplate": "",
+           "AddressConfig": {
+             "Port": 0,
+             "Protocol": ""
+           },
+           "VHosts": [
+             "cadvisor"
+           ]
+         }
+       ],
+       "Tasks": null,
+       "LogFilters": null,
+       "Volumes": [
+         {
+           "Owner": "root:root",
+           "Permission": "",
+           "ResourcePath": "/",
+           "ContainerPath": "/rootfs",
+           "Type": ""
+         },
+         {
+           "Owner": "root:root",
+           "Permission": "0755",
+           "ResourcePath": "/var/run",
+           "ContainerPath": "/var/run",
+           "Type": ""
+         },
+         {
+           "Owner": "root:root",
+           "Permission": "0555",
+           "ResourcePath": "/sys",
+           "ContainerPath": "/sys",
+           "Type": ""
+         },                      
+         {
+           "Owner": "root:root",
+           "Permission": "0555",
+           "ResourcePath": "/var/lib/docker",
+           "ContainerPath": "/var/lib/docker",
+           "Type": ""
+         }
+       ],
+       "LogConfigs": null,       
+       "Snapshot": {
+         "Pause": "",
+         "Resume": ""
+       },
+       "RAMCommitment": "256M",
+       "CPUCommitment": 1,
+       "Runs": null,
+       "Actions": null,
+       "HealthChecks": {
+         "cAdvisor - http  8081": {
+           "Script": "curl -f -s http://localhost:8080/ \u003e /dev/null",
+           "Interval": 5,
+           "Timeout": 4
+         }                                   
+       },
+       "Prereqs": null,
+       "MonitoringProfile": {
+         "MetricConfigs": null,
+         "GraphConfigs": null,
+         "ThresholdConfigs": null
+       },
+       "MemoryLimit": 0,
+       "CPUShares": 0,
+       "PIDFile": ""
+     }
+   ],
+   "ConfigFiles": null,
+   "ServicedVersion": {
+     "Version": "0.10.0",
+     "Date": "Mon Nov 24 17:40:37 UTC 2014",
+     "Gitbranch": "master",
+     "Gitcommit": "e80a617",
+     "Giturl": "",
+     "Buildtag": "0"
+   },
+   "TemplateVersion": {
+     "branch": "unknown",
+     "commit": "unknown",
+     "repo": "unknown",
+     "tag": "unknown"
+   }
+}
